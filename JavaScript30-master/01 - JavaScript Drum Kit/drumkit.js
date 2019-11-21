@@ -1,11 +1,7 @@
-const keys = document.querySelectorAll('.key');
-
 function removeTransition(e) {
     if(e.propertyName !== 'transform') return;
     this.classList.remove('playing');
 }
-
-keys.forEach(key => key.addEventListener('transitionend', removeTransition));
 
 function playSound(e) {
     // "${e.keyCode}" is ES6 syntax, where it is chosing the specific audio element 
@@ -20,10 +16,10 @@ function playSound(e) {
     key.classList.add('playing');
 }
 
-
-
 function init() {
+    const keys = document.querySelectorAll('.key');
     window.addEventListener('keydown', playSound);
+    keys.forEach(key => key.addEventListener('transitionend', removeTransition));
 }
 
 init();
