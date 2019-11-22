@@ -30,7 +30,7 @@
       --base: #fff;
       --spacing: 10px;
       --blur: 10px;
-    };
+    }
 
     img {
       background: var(--base);
@@ -38,7 +38,7 @@
       filter: blur(var(--blur));
     }
 
-    h1 {
+    .hl {
       color: var(--base);
     }
 
@@ -64,7 +64,11 @@
     const inputs = document.querySelectorAll('.controls input');
 
     function handleUpdate() {
-      console.log(this.dataset)
+      const suffix = this.dataset.sizing || '';
+      //this.name has values such as 'base, spacing, blur' which matches to the --base, --spacing, --blur. That is why
+      //you can chose css variable with `--${this.name}` and update its value. And the value does not have 'px', 
+      //that is why you need the suffix. Other wise it looks like 'padding: 10', instead of 'padding: 10px'. 
+      document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix); 
     }
 
     inputs.forEach( input => input.addEventListener('change', handleUpdate));
