@@ -108,13 +108,27 @@
       return aLast > bLast ? 1 : -1;
     })
 
-    console.log(sortedNames)
+    console.log(sortedNames);
 
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+    const transportations = data.reduce((number, vehicle) => {
+      //the 'number' is the accumulator, which start empty '{}' object as its given at the end.
+      //if you console log the number, you can see how it starts with an empty object {} accumulator, then after each iteration, it adds up the vehicle and its number.
+      // console.log(number);
+      // console.log(vehicle);
+      if(!number[vehicle]){
+        number[vehicle] = 0;
+      }
+      number[vehicle] ++ ;
+      // because you are returning the accumulator which contains all the iterated items with add up numbers, it shows how many of each vehicle exists.
+      return number;
+      //'{}' is given which means empty object.
+    }, {});
 
+    console.log(transportations)
   </script>
 </body>
 </html>
