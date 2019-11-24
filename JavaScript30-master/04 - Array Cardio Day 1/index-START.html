@@ -84,9 +84,19 @@
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
 
+    const list = document.querySelector('.mw-category');
+    
+    //the querySelector returns node list, not an array. You can convert the list into an array by using either
+    //Array.from() or
+    const links = Array.from(list.querySelectorAll('a'));
+    //spread operator. Spread operator will iterate and take out all the items out of the node list and spread it in the current array they are contained of. 
+    const links = [...list.querySelectorAll('a')];
+    const de = links.map(link => link.textContent);
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+
+
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
