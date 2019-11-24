@@ -120,6 +120,9 @@
       // console.log(number);
       // console.log(vehicle);
       if(!number[vehicle]){
+        //number is accumulator which is an object and vehicle is an item inside of an object.
+        //that is why the syntax 'number[vehicle]' reperesents {[]}. An item inside of an object.
+        // t.ex. {car:1}
         number[vehicle] = 0;
       }
       number[vehicle] ++ ;
