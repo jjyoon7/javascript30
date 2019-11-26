@@ -22,11 +22,13 @@
   let lastX = 0;
   let lastY = 0;
   let hue = 0;
-  
+  let lineWeight = 0;
+  let direction = true;
 
   function draw(e) {
     if (!isDrawing) return;
     ctx.strokeStyle = `hsl(${hue}, 100%, 50%)`;
+    ctx.lineWidth = lineWeight;
     ctx.beginPath();
     ctx.moveTo(lastX, lastY);
     ctx.lineTo(e.offsetX, e.offsetY);
@@ -34,6 +36,10 @@
     [lastX, lastY] = [e.offsetX, e.offsetY]
     // console.log(e)
     hue++;
+    lineWeight++;
+    if(lineWeight >= 90){
+      lineWeight = 0;
+    }
   }  
 
   canvas.addEventListener('mousemove', draw);
