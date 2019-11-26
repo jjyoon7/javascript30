@@ -134,10 +134,22 @@
 
     function handleClick() {
       this.classList.toggle('open');
-      console.log("hi")
+      // console.log("hi")
+    }
+
+    function toggleAnimation(e) {
+      //because there are multiple transition on element, 
+      //the function has triggered twice with the toggle, it alreay has add and remove 
+      //the class. so that is why you specify if the event has propertyName 'flex', toggle the class.
+      //the reseaosn why it is includes, its because safari takes 'flex' instead of 'flex-grow'
+      if(e.propertyName.includes('flex')){
+        this.classList.toggle('open-active');
+        console.log(this) 
+      }
     }
 
     panels.forEach(panel => panel.addEventListener('click', handleClick));
+    panels.forEach(panel => panel.addEventListener('transitionend', toggleAnimation));
 
   </script>
 </body>
