@@ -17,7 +17,7 @@
   ctx.lineJoin = 'round';
   ctx.lineCap = 'round';
   ctx.lineWidth = 100;
-
+  ctx.globalCompositeOperation = 'source-out';
   let isDrawing = false;
   let lastX = 0;
   let lastY = 0;
@@ -36,10 +36,13 @@
     [lastX, lastY] = [e.offsetX, e.offsetY]
     // console.log(e)
     hue++;
+
     lineWeight++;
     if(lineWeight >= 90){
       lineWeight = 0;
     }
+
+
   }  
 
   canvas.addEventListener('mousemove', draw);
