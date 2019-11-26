@@ -21,6 +21,10 @@
 
   fetch(endpoint).then( blob => blob.json()).then(data => cities.push(...data))
 
+  function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+  }
+
   function findMatch(wordToMatch, cities) {
     return cities.filter( place => {
       // .match() method will try to match the worthToMatch as it is if you given it without saving as a variable.
@@ -47,7 +51,7 @@
       const cityName = place.city.replace(regex, `<span class="hl">${searched}</span>`)
       return `<li>
                 <span class="name">${cityName}, ${place.state}</span>
-                <span class="population">${place.population}</span>
+                <span class="population">${numberWithCommas(place.population)}</span>
               </li>`
     }).join('');
     // console.log(html)
