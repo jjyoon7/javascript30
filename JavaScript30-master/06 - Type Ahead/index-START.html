@@ -33,15 +33,24 @@
 
   function displayMatch() {
     const searched = this.value;
-    // console.log(searched)
     const matched = findMatch(searched, cities);
     const html = matched.map( place => {
+      // with the new RegExp, it is creating a regex object with this.value with global and case insensitive,
+      const regex = new RegExp(searched, 'gi');
+      console.log(regex);
+      // .replace() method takes 2 arguments. Both are required.
+      // t.ex. replace(searchValue, newValue)
+      // searchValue is the value, or regular expression, that will be replaced by the new value.
+      // newValue is the value to replace the searchValue with.
+      // so place.city is being replaced by the regex object of this.value and then 
+      // it is replaced with this.value with the highlight css class span element.
+      const cityName = place.city.replace(regex, `<span class="hl">${searched}</span>`)
       return `<li>
-                <span class="name">${place.city}, ${place.state}</span>
+                <span class="name">${cityName}, ${place.state}</span>
                 <span class="population">${place.population}</span>
               </li>`
     }).join('');
-    console.log(html)
+    // console.log(html)
     suggestions.innerHTML = html;
     // .classList.add('.hl');
   }
