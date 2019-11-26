@@ -53,7 +53,9 @@
     // comments.splice(findIndex, 1);
     //other way to do it is
     const newComments = [
-      // ...comments.slice(0, findIndex),
+      //this means include right before the 'findIndex' in comments array.
+      ...comments.slice(0, findIndex),
+      //this means in the comments array, include the objects after 'findIndex'
       ...comments.slice(findIndex + 1)
     ]
     console.log(newComments)
