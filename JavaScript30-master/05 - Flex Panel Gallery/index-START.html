@@ -132,10 +132,17 @@
   </div>
 
   <script>
+    const panels = document.querySelectorAll('.panels');
+    console.log(panels)
+    // const panelsArray = Array.from(panels)
+    // console.log(panelsArray);
+    function handleHover(e) {
+      e.classList.add('.open');
+    }
 
+    // const panelHandle = panels.forEach( panel => {
+    //   panel.addEventlistener('hover', handleHover);
+    // });
   </script>
-
-
-
 </body>
 </html>
