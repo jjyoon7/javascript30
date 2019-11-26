@@ -19,14 +19,38 @@
 
   const cities = [];
 
-  fetch(endpoint).then( blob => blob.jason()).then(data => cities.push(...data))
+  fetch(endpoint).then( blob => blob.json()).then(data => cities.push(...data))
 
   function findMatch(wordToMatch, cities) {
     return cities.filter( place => {
+      // .match() method will try to match the worthToMatch as it is if you given it without saving as a variable.
+      //that is why you are creating a regex variable. 'gi' in RegExp method means 'g' = global match; find all matches 
+      //rather than stopping after the first match. 'i' means ignore case; both capital and lowercase should match.
       const regex = new RegExp(wordToMatch, 'gi');
       return place.city.match(regex) || place.state.match(regex);
     })
   }
+
+  function displayMatch() {
+    const searched = this.value;
+    // console.log(searched)
+    const matched = findMatch(searched, cities);
+    const html = matched.map( place => {
+      return `<li>
+                <span class="name">${place.city}, ${place.state}</span>
+                <span class="population">${place.population}</span>
+              </li>`
+    }).join('');
+    console.log(html)
+    suggestions.innerHTML = html;
+    // .classList.add('.hl');
+  }
+
+  const searchInput = document.querySelector('.search');
+  const suggestions = document.querySelector('.suggestions')
+  searchInput.addEventListener('change', displayMatch)
+  searchInput.addEventListener('keyup', displayMatch)
+  // findMatch(input, cities);
 
 </script>
 </body>
