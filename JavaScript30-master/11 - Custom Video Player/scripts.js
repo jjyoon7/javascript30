@@ -8,11 +8,22 @@ const ranges = player.querySelector('.player__slider');
 
 function handleVideo() {
     // console.log('play')
-    if(this.paused) {
+    if(video.paused) {
         video.play();
     }else {
         video.pause();
     }
+    // const method = video.paused ? 'play' : 'pause';
+    // video[method]();
+}
+
+function handleButtons() {
+    const icon = this.paused ? '►' : '❚ ❚';
+    toggle.textContent = icon;
 }
 
 video.addEventListener('click', handleVideo);
+video.addEventListener('play', handleButtons);
+video.addEventListener('pause', handleButtons);
+
+toggle.addEventListener('click', handleVideo);
