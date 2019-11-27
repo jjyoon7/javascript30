@@ -7,6 +7,21 @@
 </head>
 <body>
 <script>
+  const pressed = [];
+  const secretCode = 'puputedji'
+
+  function handleKey(e) {
+    pressed.push(e.key);
+    //-secretCode.length -1 will start to delete the item from the array from the end of an array.
+    //pressed.length - secretcode.length witll keep only the number of letters of secretcode in the array and delete the rest.
+    pressed.splice(-secretCode.length - 1, pressed.length - secretCode.length );
+
+    if(pressed.join('').includes(secretCode)) {
+      cornify_add();
+    }
+  }
+
+  window.addEventListener('keyup', handleKey);
 </script>
 </body>
 </html>
