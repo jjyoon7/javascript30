@@ -31,6 +31,15 @@ function handleSkip() {
     // this.skip
 }
 
+function handleRange() {
+    //this will return which element it has been changed.
+    // console.log(video);
+    // console.log(this);
+    //in video element, update the one with either volumn or playbackrate,
+    //based on what this.name returns and set it to value of it.
+    video[this.name] = this.value;
+}
+
 video.addEventListener('click', handleVideo);
 video.addEventListener('play', handleButtons);
 video.addEventListener('pause', handleButtons);
@@ -38,3 +47,4 @@ video.addEventListener('pause', handleButtons);
 toggle.addEventListener('click', handleVideo);
 
 skipButtons.forEach( skip => { skip.addEventListener('click', handleSkip)})
+ranges.forEach( range => range.addEventListener('change', handleRange));
