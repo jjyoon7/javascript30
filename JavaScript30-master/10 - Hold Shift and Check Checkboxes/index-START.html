@@ -97,22 +97,26 @@
 
 <script>
   const checkBoxes = document.querySelectorAll('input');
-  // const checkBoxes = document.querySelectorAll('.inbox input[type="checkbox"]');
-  // console.log(checkBoxes);
   let lastChecked;
 
   function handleCheck(e) {
-    // console.log(e)
-    // console.log(this)
+
     let inbetween = false;
 
+    // if the event has shiftKey down and this DOM element is checked, 
     if(e.shiftKey && this.checked) {
-      // console.log("check")
+      //loop over all the checkBoxed and
+      //current iterated checkBox DOM element is the current this DOM,
+      //and or iterated checkBox is the lastChecked checkBox. 
+      //which is this - like mentioned in the bottom.
+      //this makes the bottom to top selection also possible.
       checkBoxes.forEach( checkBox => {
         if(checkBox === this || checkBox === lastChecked) {
+          //in that case, inbetween is !inbetween.
           inbetween = !inbetween;
         }
 
+        //and if inbetween is true, check the boxes.
         if(inbetween) {
           checkBox.checked = true;
         }
