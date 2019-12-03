@@ -43,6 +43,7 @@
   </div>
 
   <script>
+    //debounce function is for performance, so it does not call the scroll function too much.
     function debounce(func, wait = 20, immediate = true) {
       var timeout;
       return function() {
