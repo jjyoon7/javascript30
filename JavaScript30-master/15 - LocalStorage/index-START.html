@@ -62,6 +62,14 @@
 
   function handleCheck(e) {
     if(!e.target.matches('input')) return;
+    const element = e.target;
+    const index = element.dataset.index;
+    //in given index number in items array, switch its done property to opposite.
+    items[index].done = !items[index].done;
+    //save that updated items into localStorage
+    localStorage.setItem('items', JSON.stringify(items));
+    //and reupdate the list
+    handleList(items, itemsList);
   }
 
   addItems.addEventListener('submit', handleItem);
