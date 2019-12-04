@@ -60,7 +60,12 @@
 
   }
 
+  function handleCheck(e) {
+    if(!e.target.matches('input')) return;
+  }
+
   addItems.addEventListener('submit', handleItem);
+  itemsList.addEventListener('click', handleCheck);
   handleList(items, itemsList);
 </script>
 
