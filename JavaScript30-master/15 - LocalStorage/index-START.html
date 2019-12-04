@@ -39,7 +39,8 @@
       done: false,
     }
     items.push(item);
-    handleList(items, itemsList)
+    handleList(items, itemsList);
+    localStorage.setItem('itmes', JSON.stringify(items));
     //this will reset the form.
     this.reset();
   }
