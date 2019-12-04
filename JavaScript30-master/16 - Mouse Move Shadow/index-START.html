@@ -35,6 +35,25 @@
   </style>
 
 <script>
+  const hero = document.queryCommandEnabled('.hero');
+  const text = document.queryCommandEnabled('h1');
+
+  function shadow(e) {
+    //deconstructing
+    const { offsetWidth: width, offsetHeight: height } = hero;
+    let { offsetX: x, offsetY: y } = e;
+
+    //'this' is hero and e.target could be child element(t.ex. h1) of hero,
+    //where the x and y could turn 0 0 on mousemove if the mouse is on the beginning
+    //of that h1 element.
+    //to prevent the change of number like this, you need to set it as follows
+    if(this !== e.target) {
+      x = x + e.target.offsetLeft;
+      y = y + e.target.offsetTop;
+    }
+  }
+
+  hero.addEventListner('mousemove', shadow);
 </script>
 </body>
 </html>
