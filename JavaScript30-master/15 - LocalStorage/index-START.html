@@ -28,7 +28,8 @@
 <script>
   const addItems = document.querySelector('.add-items');
   const itemsList = document.querySelector('.plates');
-  const items = [];
+  //in this way, you are putting stringified localStorage data into an object.
+  const items = JSON.parse(localStorage.getItem('items')) || [];
 
   function handleItem(e) {
     e.preventDefault();
@@ -59,7 +60,8 @@
 
   }
 
-  addItems.addEventListener('submit', handleItem)
+  addItems.addEventListener('submit', handleItem);
+  handleList(items, itemsList);
 </script>
 
 
